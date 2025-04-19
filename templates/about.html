@@ -1,0 +1,60 @@
+{% extends "layout.html" %}
+
+{% block title %}About - Feng Shui Your Room!{% endblock %}
+
+{% block content %}
+<div class="container" style="max-width: 800px;">
+    <h1 class="text-center mb-4">About This Project</h1>
+    
+    <div class="card mb-4">
+        <div class="card-body">
+            <h5 class="card-title">Feng Shui Your Room!</h5>
+            <p class="card-text">
+                This is an educational web application designed to teach the principles of Feng Shui through interactive learning and a room simulation experience.
+            </p>
+            <p class="card-text">
+                The application includes:
+            </p>
+            <ul>
+                <li>Educational content on the history and concepts of Feng Shui</li>
+                <li>An interactive room simulator to practice furniture placement</li>
+                <li>A quiz to test your knowledge</li>
+            </ul>
+        </div>
+    </div>
+    
+    <div class="card mb-4">
+        <div class="card-header">
+            <h5>Learning Objectives</h5>
+        </div>
+        <div class="card-body">
+            <ul>
+                <li>Understand the history and philosophy of Feng Shui</li>
+                <li>Apply interior layout rules based on qi flow</li>
+                <li>Reinforce learning through practical simulation</li>
+                <li>Build intuitive understanding rather than rote memorization</li>
+            </ul>
+        </div>
+    </div>
+    
+    <div class="card">
+        <div class="card-header">
+            <h5>Technical Implementation</h5>
+        </div>
+        <div class="card-body">
+            <p>This prototype was built using:</p>
+            <ul>
+                <li>Flask (Python web framework)</li>
+                <li>Jinja2 (Templating engine)</li>
+                <li>Bootstrap (UI Framework)</li>
+                <li>jQuery (JavaScript library)</li>
+                <li>jQuery UI (For drag-and-drop functionality)</li>
+            </ul>
+        </div>
+    </div>
+    
+    <div class="text-center mt-4">
+        <a href="{{ url_for('home') }}" class="btn btn-primary" style="background-color: #8470a7; border-color: #6e5b8b;">Back to Home</a>
+    </div>
+</div>
+{% endblock %} 

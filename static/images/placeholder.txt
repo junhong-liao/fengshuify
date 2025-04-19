@@ -1,0 +1,9 @@
+This directory contains the following images needed for the application:
+
+1. bagua_diagram.png - The Feng Shui Bagua diagram shown on the homepage
+2. feng_shui_village.jpg - Image of an ancient Chinese village
+3. qi_flow.jpg - Diagram showing qi flow concept
+4. modern_feng_shui.jpg - Example of modern Feng Shui room
+5. grid-bg.png - Grid background for the room simulator
+
+You'll need to add these images to make the application fully functional. 

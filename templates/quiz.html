@@ -1,0 +1,133 @@
+{% extends "layout.html" %}
+
+{% block title %}Quiz - Feng Shui Your Room!{% endblock %}
+
+{% block content %}
+<div class="container" style="max-width: 800px;">
+    <h1 class="text-center mb-4">Feng Shui Knowledge Quiz</h1>
+    <p class="text-center mb-4">Test your knowledge on Feng Shui principles!</p>
+    
+    <form id="quizForm">
+        <div class="card mb-4">
+            <div class="card-header bg-light">
+                <h5>Question 1</h5>
+            </div>
+            <div class="card-body">
+                <p class="card-text">What is the main goal of Feng Shui?</p>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="q1" id="q1a" value="a">
+                    <label class="form-check-label" for="q1a">
+                        To decorate a room in Chinese style
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="q1" id="q1b" value="b">
+                    <label class="form-check-label" for="q1b">
+                        To manipulate the environment to maximize good energy flow
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="q1" id="q1c" value="c">
+                    <label class="form-check-label" for="q1c">
+                        To organize furniture in a symmetrical way
+                    </label>
+                </div>
+            </div>
+        </div>
+        
+        <div class="card mb-4">
+            <div class="card-header bg-light">
+                <h5>Question 2</h5>
+            </div>
+            <div class="card-body">
+                <p class="card-text">According to Feng Shui principles, where should a bed be positioned?</p>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="q2" id="q2a" value="a">
+                    <label class="form-check-label" for="q2a">
+                        With a solid wall behind the headboard and not directly aligned with the door
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="q2" id="q2b" value="b">
+                    <label class="form-check-label" for="q2b">
+                        Directly under a window to maximize natural light
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="q2" id="q2c" value="c">
+                    <label class="form-check-label" for="q2c">
+                        In the center of the room to create balance
+                    </label>
+                </div>
+            </div>
+        </div>
+        
+        <div class="card mb-4">
+            <div class="card-header bg-light">
+                <h5>Question 3</h5>
+            </div>
+            <div class="card-body">
+                <p class="card-text">What does the concept of "qi" represent in Feng Shui?</p>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="q3" id="q3a" value="a">
+                    <label class="form-check-label" for="q3a">
+                        The arrangement of furniture
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="q3" id="q3b" value="b">
+                    <label class="form-check-label" for="q3b">
+                        The color scheme of a room
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="q3" id="q3c" value="c">
+                    <label class="form-check-label" for="q3c">
+                        The vital energy or life force
+                    </label>
+                </div>
+            </div>
+        </div>
+        
+        <div class="text-center">
+            <button type="submit" class="btn btn-primary" style="background-color: #8470a7; border-color: #6e5b8b;">Submit Answers</button>
+        </div>
+    </form>
+    
+    <div id="results" class="mt-4 p-3 text-center" style="display: none;">
+        <h3>Quiz Results</h3>
+        <p id="score"></p>
+        <p id="feedback"></p>
+        <a href="{{ url_for('home') }}" class="btn btn-success mt-3">Return to Homepage</a>
+    </div>
+</div>
+{% endblock %}
+
+{% block additional_scripts %}
+<script>
+    $(document).ready(function() {
+        $("#quizForm").submit(function(event) {
+            event.preventDefault();
+            
+            // Get form data
+            const formData = $(this).serializeArray();
+            
+            // Submit quiz
+            $.ajax({
+                url: "/submit_quiz",
+                method: "POST",
+                data: formData,
+                success: function(response) {
+                    // Display results
+                    $("#score").text(`You scored ${response.score} out of ${response.total}!`);
+                    $("#feedback").text(response.message);
+                    
+                    // Hide form and show results
+                    $("#quizForm").hide();
+                    $("#results").show();
+                }
+            });
+        });
+    });
+</script>
+{% endblock %} 

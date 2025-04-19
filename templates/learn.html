@@ -1,0 +1,99 @@
+{% extends "layout.html" %}
+
+{% block title %}Learn Feng Shui - Feng Shui Your Room!{% endblock %}
+
+{% block additional_head %}
+<style>
+    .learn-container {
+        max-width: 800px;
+        margin: 0 auto;
+    }
+    .nav-buttons {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 30px;
+    }
+    .nav-btn {
+        background-color: #8470a7;
+        border-color: #6e5b8b;
+        width: 100px;
+    }
+    .section {
+        display: none;
+    }
+    .section.active {
+        display: block;
+    }
+    .nav-btn:disabled {
+        background-color: #ccbdee;
+        border-color: #ccbdee;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="learn-container">
+    <!-- ADD ADDITIOLNAL SECTIONS HERE -->
+     
+    <!-- Section 1: What is Feng Shui -->
+    <div class="section active" id="section1">
+        <h2 class="text-center mb-4">What is Feng Shui?</h2>
+        <!-- Content will be added later -->
+    </div>
+    
+    <!-- Section 2: History and Development -->
+    <div class="section" id="section2">
+        <h2 class="text-center mb-4">Feng Shui 风水</h2>
+        <!-- Content will be added later -->
+    </div>
+    
+    <!-- Navigation buttons -->
+    <div class="nav-buttons">
+        <button class="btn btn-primary nav-btn" id="prevBtn" disabled>Back</button>
+        <button class="btn btn-primary nav-btn" id="nextBtn">Next</button>
+    </div>
+</div>
+{% endblock %}
+
+{% block additional_scripts %}
+<script>
+    $(document).ready(function() {
+        let currentSection = 1;
+        const totalSections = 3;
+        
+        // Update navigation buttons
+        function updateNavButtons() {
+            $('#prevBtn').prop('disabled', currentSection === 1);
+            $('#nextBtn').text(currentSection === totalSections ? 'Finish' : 'Next');
+        }
+        
+        // Show current section
+        function showSection(sectionNum) {
+            $('.section').removeClass('active');
+            $(`#section${sectionNum}`).addClass('active');
+            currentSection = sectionNum;
+            updateNavButtons();
+        }
+        
+        // Next button handler
+        $('#nextBtn').click(function() {
+            if (currentSection < totalSections) {
+                showSection(currentSection + 1);
+            } else {
+                // Redirect to simulator on finish
+                window.location.href = "{{ url_for('simulator') }}";
+            }
+        });
+        
+        // Previous button handler
+        $('#prevBtn').click(function() {
+            if (currentSection > 1) {
+                showSection(currentSection - 1);
+            }
+        });
+        
+        // Initialize
+        updateNavButtons();
+    });
+</script>
+{% endblock %} 
