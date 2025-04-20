@@ -45,7 +45,7 @@ pip install flask
 
 4. Run the application
 ```
-python app.py
+python server.py 
 ```
 
 5. Open your browser and navigate to `http://127.0.0.1:5000/`
@@ -59,12 +59,3 @@ python app.py
   - `js/` - JavaScript files
   - `images/` - Images used in the application
 
-## Missing Images
-
-Note: This prototype requires the following images which need to be added to the `static/images` directory:
-
-- `bagua_diagram.png` - The Feng Shui Bagua diagram shown on the homepage
-- `feng_shui_village.jpg` - Image of an ancient Chinese village
-- `qi_flow.jpg` - Diagram showing qi flow concept
-- `modern_feng_shui.jpg` - Example of modern Feng Shui room
-- `grid-bg.png` - Grid background for the room simulator 
