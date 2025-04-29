@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="container">
+    <h1 class="my-4 text-center">Overview</h1>
+    <div class="row g-4 justify-content-center">
+        <div class="col-6 col-md-4 d-flex justify-content-center">
+            <a href="{{ url_for('learn', lesson=1) }}" class="btn learn-button">
+                Historical and Cultural Background
+            </a>
+        </div>
+        <div class="col-6 col-md-4 d-flex justify-content-center">
+            <a href="{{ url_for('learn', lesson=2) }}" class="btn learn-button">
+                Front Door (Entryway)
+            </a>
+        </div>
+        <div class="col-6 col-md-4 d-flex justify-content-center">
+            <a href="{{ url_for('learn', lesson=3) }}" class="btn learn-button">
+                Bed Placement
+            </a>
+        </div>
+        <div class="col-6 col-md-4 d-flex justify-content-center">
+            <a href="{{ url_for('learn', lesson=4) }}" class="btn learn-button">
+                Mirrors
+            </a>
+        </div>
+        <div class="col-6 col-md-4 d-flex justify-content-center">
+            <a href="{{ url_for('learn', lesson=5) }}" class="btn learn-button">
+                (Concept 4)
+            </a>
+        </div>
+        <div class="col-6 col-md-4 d-flex justify-content-center">
+            <a href="{{ url_for('learn', lesson=6) }}" class="btn learn-button">
+                (Concept 5)
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %}

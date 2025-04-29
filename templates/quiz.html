@@ -1,6 +1,9 @@
-{% extends "layout.html" %}
+<!-- multiple choice quiz for conceptual learning section -->
 
-{% block title %}Quiz - Feng Shui Your Room!{% endblock %}
+{% extends "layout.html" %}
+{% block head %}
+<script type="text/javascript" src="{{url_for('static', filename='quiz.js')}}"></script>
+{% endblock %}
 
 {% block content %}
 <div class="container" style="max-width: 800px;">
@@ -98,36 +101,7 @@
         <h3>Quiz Results</h3>
         <p id="score"></p>
         <p id="feedback"></p>
-        <a href="{{ url_for('home') }}" class="btn btn-success mt-3">Return to Homepage</a>
+        <a href="{{ url_for('simulator') }}" class="btn btn-success mt-3">Try Room Simulator</a>
     </div>
 </div>
 {% endblock %}
-
-{% block additional_scripts %}
-<script>
-    $(document).ready(function() {
-        $("#quizForm").submit(function(event) {
-            event.preventDefault();
-            
-            // Get form data
-            const formData = $(this).serializeArray();
-            
-            // Submit quiz
-            $.ajax({
-                url: "/submit_quiz",
-                method: "POST",
-                data: formData,
-                success: function(response) {
-                    // Display results
-                    $("#score").text(`You scored ${response.score} out of ${response.total}!`);
-                    $("#feedback").text(response.message);
-                    
-                    // Hide form and show results
-                    $("#quizForm").hide();
-                    $("#results").show();
-                }
-            });
-        });
-    });
-</script>
-{% endblock %} 

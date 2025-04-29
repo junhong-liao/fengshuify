@@ -1,5 +1,3 @@
-/* Custom styles for Feng Shui Your Room! application */
-
 body {
     font-family: 'Arial', sans-serif;
     background-color: #f8f9fa;
@@ -37,15 +35,51 @@ h1, h2, h3, h4, h5, h6 {
     transform: translateY(-5px);
 }
 
-/* Learn page styles */
+/* learn overview styling */
+.learn-button {
+    background-color: #8470a7;
+    color: white;
+    border-radius: 12px;
+    height: 100px;
+    width: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 16px;
+    padding: 10px;
+}
+.learn-button:hover {
+    background-color: #6e5b8b;
+}
+
+/* learn page styling */
 .learn-container {
     background-color: white;
     padding: 30px;
     border-radius: 8px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
+.learn-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+.nav-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+}
+.nav-btn {
+    background-color: #8470a7;
+    border-color: #6e5b8b;
+    width: 100px;
+}
+.nav-btn:disabled {
+    background-color: #ccbdee;
+    border-color: #ccbdee;
+}
 
-/* Simulator page styles */
+/* TODO simulation page styling */
 .room-container {
     background-image: url('../images/grid-bg.png');
     background-size: 20px 20px;
@@ -60,7 +94,7 @@ h1, h2, h3, h4, h5, h6 {
     transform: scale(1.05);
 }
 
-/* Quiz page styles */
+/* quiz page styling */
 .form-check {
     margin-bottom: 10px;
 }
@@ -75,7 +109,6 @@ h1, h2, h3, h4, h5, h6 {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-/* Responsive adjustments */
 @media (max-width: 768px) {
     .room-container {
         width: 100%;

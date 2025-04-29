@@ -3,11 +3,15 @@
 {% block content %}
 <div class="text-center">
     <h1 class="my-4">Feng Shui Your Room!</h1>
-    
-    <div class="mx-auto my-5" style="max-width: 400px;">
-        <img src="{{ url_for('static', filename='images/bagua_diagram.png') }}" alt="Feng Shui Bagua Diagram" class="img-fluid rounded">
+    <div class="subheading">
+        Boost the energy in your room using the principles of feng shui!
     </div>
     
-    <a href="{{ url_for('learn') }}" class="btn btn-primary" style="background-color: #8470a7; border-color: #6e5b8b;">Start!</a>
+    <div class="mx-auto my-5" style="max-width: 400px;">
+        <img src="{{ url_for('static', filename='images/bagua.png') }}"
+             alt="Feng Shui Bagua Diagram" class="img-fluid rounded">
+    </div>
+    
+    <a href="{{ url_for('learn', lesson=1) }}" class="btn btn-primary" style="background-color: #8470a7; border-color: #6e5b8b;">Start!</a>
 </div>
 {% endblock %} 

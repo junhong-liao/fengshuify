@@ -1,7 +1,5 @@
 {% extends "layout.html" %}
 
-{% block title %}Room Simulator - Feng Shui Your Room!{% endblock %}
-
 {% block additional_head %}
 <style>
     .placeholder-container {
@@ -32,7 +30,8 @@
     
     <div class="mt-4">
         <a href="{{ url_for('quiz') }}" class="btn btn-success">Take the Quiz!</a>
-        <a href="{{ url_for('learn') }}" class="btn btn-primary" style="background-color: #8470a7; border-color: #6e5b8b;">Back to Learning</a>
+        <a href="{{ url_for('learn_overview') }}" class="btn btn-primary"
+           style="background-color: #8470a7; border-color: #6e5b8b;">Back to Learning</a>
     </div>
 </div>
 {% endblock %}
