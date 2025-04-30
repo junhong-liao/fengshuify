@@ -129,7 +129,6 @@ def submit_quiz():
         'message': "Good job!" if score >= 2 else "Try again!"
     })
 
-# TODO
 @app.route('/validate_placement', methods=['POST'])
 def validate_placement():
     # Get placement data from request
@@ -138,30 +137,44 @@ def validate_placement():
     # Validation feedback
     feedback = []
     
-    # Check Feng Shui rules
-    if 'bed' in placement and 'door' in placement:
-        bed = placement['bed']
-        door = placement['door']
-        
-        # Rule: Bed should not be directly aligned with the door
-        if is_aligned(bed, door):
-            feedback.append("The bed should not be directly aligned with the door.")
+    # Define grid size
+    grid_rows, grid_cols = 8, 8
     
-    if 'bed' in placement and 'mirror' in placement:
-        bed = placement['bed']
-        mirror = placement['mirror']
-        
-        # Rule: Mirror should not face the bed
-        if is_facing(mirror, bed):
-            feedback.append("The mirror should not face the bed.")
+    # Required unique items
+    required = ['door', 'bed', 'desk', 'mirror']
+    for req in required:
+        if req not in placement:
+            feedback.append(f"You must place a {req} in the room.")
     
-    if 'desk' in placement and 'door' in placement:
-        desk = placement['desk']
-        door = placement['door']
-        
-        # Rule: Desk should have a clear view of the door
-        if not has_clear_view(desk, door):
-            feedback.append("The desk should have a clear view of the door.")
+    # If missing required items, return early
+    if feedback:
+        return jsonify({ 'valid': False, 'feedback': feedback })
+    
+    door = placement['door']
+    bed = placement['bed']
+    desk = placement['desk']
+    mirror = placement['mirror']
+    
+    # 1. Door must be on perimeter (exterior wall)
+    dr, dc = door['row'], door['col']
+    if not (dr == 0 or dr == grid_rows-1 or dc == 0 or dc == grid_cols-1):
+        feedback.append("The door must sit on an exterior wall (room perimeter).")
+    
+    # 2. Bed should not be directly aligned (facing) with the door
+    if is_aligned(bed, door):
+        feedback.append("The bed should not be directly aligned with the door.")
+    
+    # 3. Mirror should not face the bed
+    if is_facing(mirror, bed):
+        feedback.append("The mirror should not face the bed.")
+    
+    # 4. Mirror should not face the door (prevents qi bouncing out)
+    if is_facing(mirror, door):
+        feedback.append("The mirror should not face the door.")
+    
+    # 5. Desk should have a clear view of the door (within 5 cells)
+    if not has_clear_view(desk, door):
+        feedback.append("The desk should have a clear view of the door.")
     
     # If no negative feedback, add positive message
     if not feedback:
