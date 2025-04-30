@@ -7,7 +7,7 @@ learn_sections = [
     {
         "title": "What is Feng Shui?",
         "summary": "Feng shui 风水 is a type of geomancy originating from ancient Chinese farming villages." +
-                " In these villages, people believed their ancestors’ spirits (and other intangible forces)" +
+                " In these villages, people believed their ancestors' spirits (and other intangible forces)" +
                 " were at work in their lives.",
         "image": "/static/images/village.jpg",
         "alt": "Painting of ancient Chinese farming village",
@@ -20,7 +20,7 @@ learn_sections = [
         "image": "/static/images/diagram.jpg",
         "alt": "Diagram depicting energy flow in feng shui",
         "secondary": "The goal of feng shui is to manipulate the environment to maximize this good energy " +
-                "flow and be in “harmony” with the universe."
+                "flow and be in \"harmony\" with the universe."
     },
     {
         "title": "Feng Shui and Interior Design",
@@ -29,7 +29,7 @@ learn_sections = [
                  " mental and physical state!",
         "image": "/static/images/floorplan.jpg",
         "alt": "Floor plan of a building signaling energy flow through feng shui",
-        "secondary": "Let’s check out 5 major ways to apply feng shui to interior design!"
+        "secondary": "Let's check out 5 major ways to apply feng shui to interior design!"
     }
 ]
 
@@ -132,35 +132,63 @@ def submit_quiz():
 # TODO
 @app.route('/validate_placement', methods=['POST'])
 def validate_placement():
-    # Simple validation for furniture placement
+    # Get placement data from request
     placement = request.json
     
-    # Example validation rules
+    # Validation feedback
     feedback = []
     
-    if 'bed' in placement and 'mirror' in placement:
-        if is_facing(placement['mirror'], placement['bed']):
-            feedback.append("Mirror should not face the bed.")
-        
+    # Check Feng Shui rules
     if 'bed' in placement and 'door' in placement:
-        if is_aligned(placement['bed'], placement['door']):
-            feedback.append("Bed should not be directly aligned with the door.")
+        bed = placement['bed']
+        door = placement['door']
+        
+        # Rule: Bed should not be directly aligned with the door
+        if is_aligned(bed, door):
+            feedback.append("The bed should not be directly aligned with the door.")
     
+    if 'bed' in placement and 'mirror' in placement:
+        bed = placement['bed']
+        mirror = placement['mirror']
+        
+        # Rule: Mirror should not face the bed
+        if is_facing(mirror, bed):
+            feedback.append("The mirror should not face the bed.")
+    
+    if 'desk' in placement and 'door' in placement:
+        desk = placement['desk']
+        door = placement['door']
+        
+        # Rule: Desk should have a clear view of the door
+        if not has_clear_view(desk, door):
+            feedback.append("The desk should have a clear view of the door.")
+    
+    # If no negative feedback, add positive message
     if not feedback:
-        feedback.append("Good job! :D")
+        feedback.append("Great job! Your room has good Feng Shui energy flow.")
     
     return jsonify({
-        'valid': len(feedback) == 1 and "Good job" in feedback[0],
+        'valid': len(feedback) == 1 and "Great job" in feedback[0],
         'feedback': feedback
     })
 
 def is_facing(item1, item2):
-    # Simplified check - in a real app, this would involve coordinates and orientation
-    return False
+    # Check if items are facing each other
+    # In our simplified model, we'll just check if they're on the same row or column
+    return (item1['row'] == item2['row'] or item1['col'] == item2['col'])
 
 def is_aligned(item1, item2):
-    # Simplified check - in a real app, this would involve coordinates
-    return False
+    # Check if items are directly aligned
+    # This would mean foot of bed pointing to door
+    return (item1['row'] == item2['row'] or item1['col'] == item2['col'])
+
+def has_clear_view(item1, item2):
+    # Check if item1 has clear view of item2
+    # In our simplified model, this means they're not too far apart
+    max_distance = 5  # Define maximum distance for "clear view"
+    row_dist = abs(item1['row'] - item2['row'])
+    col_dist = abs(item1['col'] - item2['col'])
+    return row_dist <= max_distance and col_dist <= max_distance
 
 if __name__ == '__main__':
     app.run(debug=True, port=5001)
