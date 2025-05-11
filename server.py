@@ -1,4 +1,4 @@
-from flask import Flask, render_template, jsonify, request
+from flask import Flask, render_template, jsonify, request, url_for
 
 app = Flask(__name__)
 
@@ -80,6 +80,91 @@ lessons = [
     },
 ]
 
+# Orientation mini-game data
+orientation_games = {
+    "front_door": {
+        "section_name": "Front Door Placement",
+        "game_instruction": "Choose the correct front door placement for optimal Feng Shui energy flow:",
+        "choices": [
+            {
+                "id": "a",
+                "label": "Small door opening to a narrow hallway",
+                "image_url": "",  # To be filled later with actual image paths
+                "alt": "Small door opening to a narrow hallway"
+            },
+            {
+                "id": "b",
+                "label": "Large door opening to a spacious, well-lit entryway",
+                "image_url": "",
+                "alt": "Large door opening to a spacious, well-lit entryway"
+            },
+            {
+                "id": "c",
+                "label": "Door opening directly to a staircase",
+                "image_url": "",
+                "alt": "Door opening directly to a staircase"
+            }
+        ],
+        "correct": "b",
+        "correct_label": "Large door opening to a spacious, well-lit entryway",
+        "explanation": "A large door that opens to a spacious, well-lit entryway allows positive qi energy to flow freely into the home. This creates an inviting entrance and prevents energy blockages."
+    },
+    "bed_placement": {
+        "section_name": "Bed Placement",
+        "game_instruction": "Select the optimal bed placement according to Feng Shui principles:",
+        "choices": [
+            {
+                "id": "a",
+                "label": "Bed with foot pointing directly at the door",
+                "image_url": "",
+                "alt": "Bed with foot pointing directly at the door"
+            },
+            {
+                "id": "b",
+                "label": "Bed placed directly under a window",
+                "image_url": "",
+                "alt": "Bed placed directly under a window"
+            },
+            {
+                "id": "c",
+                "label": "Bed with solid wall behind headboard and clear view of the door",
+                "image_url": "",
+                "alt": "Bed with solid wall behind headboard and clear view of the door"
+            }
+        ],
+        "correct": "c",
+        "correct_label": "Bed with solid wall behind headboard and clear view of the door",
+        "explanation": "The optimal bed placement has a solid wall behind the headboard for support and stability, while having a clear view of the door provides security. The foot of the bed should not point directly at the door as this is considered the 'death position' in Feng Shui."
+    },
+    "mirror_placement": {
+        "section_name": "Mirror Placement",
+        "game_instruction": "Choose the correct mirror placement for good Feng Shui:",
+        "choices": [
+            {
+                "id": "a",
+                "label": "Mirror facing the bed",
+                "image_url": "",
+                "alt": "Mirror facing the bed"
+            },
+            {
+                "id": "b",
+                "label": "Mirror facing the bedroom door",
+                "image_url": "",
+                "alt": "Mirror facing the bedroom door"
+            },
+            {
+                "id": "c",
+                "label": "Mirror on side wall, not facing bed or door",
+                "image_url": "",
+                "alt": "Mirror on side wall, not facing bed or door"
+            }
+        ],
+        "correct": "c",
+        "correct_label": "Mirror on side wall, not facing bed or door",
+        "explanation": "Mirrors should not face the bed as they can disturb sleep by reflecting energy, and shouldn't face the door as they can bounce energy back out. The best placement is on a side wall where it won't reflect the bed or door."
+    }
+}
+
 
 @app.route('/')
 def home():
@@ -110,23 +195,135 @@ def simulator():
 def about():
     return render_template('about.html')
 
+# New route for the orientation mini-game
+@app.route('/orientation_game/<section>')
+def orientation_game(section):
+    if section not in orientation_games:
+        return "Game not found", 404
+    
+    game_data = orientation_games[section]
+    # Determine back URL based on section
+    if section == "front_door":
+        back_url = url_for('learn', lesson="0")
+    elif section == "bed_placement":
+        back_url = url_for('learn', lesson="1")
+    elif section == "mirror_placement":
+        back_url = url_for('learn', lesson="2")
+    else:
+        back_url = url_for('learn_overview')
+    
+    return render_template('orientation_game.html', 
+                          section=section,
+                          section_name=game_data["section_name"],
+                          game_instruction=game_data["game_instruction"],
+                          choices=game_data["choices"],
+                          back_url=back_url)
+
+# API endpoint to check orientation game answers
+@app.route('/check_orientation', methods=['POST'])
+def check_orientation():
+    section = request.form.get('section')
+    choice = request.form.get('choice')
+    
+    if section not in orientation_games:
+        return jsonify({"error": "Invalid section"}), 400
+    
+    game_data = orientation_games[section]
+    is_correct = choice == game_data["correct"]
+    
+    return jsonify({
+        "correct": is_correct,
+        "explanation": game_data["explanation"],
+        "correct_label": game_data["correct_label"]
+    })
+
 # stores user's quiz answers
 @app.route('/submit_quiz', methods=['POST'])
 def submit_quiz():
     correct_answers = {
         'q1': 'b',
         'q2': 'a',
-        'q3': 'c'
+        'q3': 'c',
+        'q4': 'b',
+        'q5': 'c'
     }
+    
+    # Question texts and answer choices to provide better feedback
+    questions = {
+        'q1': {
+            'text': 'What is the main goal of Feng Shui?',
+            'a': 'To decorate a room in traditional Chinese style',
+            'b': 'To manipulate the environment to maximize good energy flow',
+            'c': 'To organize furniture in a symmetrical pattern'
+        },
+        'q2': {
+            'text': 'According to Feng Shui principles, how should the front door be positioned?',
+            'a': 'It should be the largest door in the house and in a brightly lit, open entryway',
+            'b': 'It should be small and dark to prevent negative energy from entering',
+            'c': 'It should always face north to align with magnetic energy'
+        },
+        'q3': {
+            'text': 'According to Feng Shui principles, how should a bed be positioned?',
+            'a': 'With the foot of the bed pointed directly at the door for proper energy flow',
+            'b': 'Directly under a window to maximize natural light',
+            'c': 'Not with the foot pointed at the door, but with a clear view of the door'
+        },
+        'q4': {
+            'text': 'How should mirrors be placed according to Feng Shui principles?',
+            'a': 'Directly facing the bed to reflect positive energy',
+            'b': 'Not facing the bed or bedroom door, and not hung right above the bed',
+            'c': 'Opposite the door to bounce energy back into the room'
+        },
+        'q5': {
+            'text': 'What does the concept of qì (气) represent in Feng Shui?',
+            'a': 'The color scheme used in interior design',
+            'b': 'The arrangement of furniture in a room',
+            'c': 'The flow of energy throughout the universe'
+        }
+    }
+    
     user_answers = request.form
     score = 0
-    for q, ans in correct_answers.items():
-        if q in user_answers and user_answers[q] == ans:
-            score += 1
+    incorrect = []
+    
+    # Check if all questions are answered
+    all_answered = all(q in user_answers for q in correct_answers.keys())
+    
+    if not all_answered:
+        return jsonify({
+            'score': score,
+            'total': len(correct_answers),
+            'message': "Please answer all questions to get accurate results.",
+            'incorrect': []
+        })
+    
+    for q, correct_ans in correct_answers.items():
+        if q in user_answers:
+            user_choice = user_answers[q]
+            is_correct = user_choice == correct_ans
+            
+            if is_correct:
+                score += 1
+            else:
+                incorrect.append({
+                    'question': questions[q]['text'],
+                    'user_answer': questions[q][user_choice],
+                    'correct_answer': questions[q][correct_ans]
+                })
+    
+    # Create appropriate message based on score
+    if score == 5:
+        message = "Perfect! You've mastered Feng Shui principles!"
+    elif score >= 3:
+        message = "Good job! You have a solid understanding of Feng Shui."
+    else:
+        message = "You might want to review the Feng Shui lessons again."
+    
     return jsonify({
         'score': score,
         'total': len(correct_answers),
-        'message': "Good job!" if score >= 2 else "Try again!"
+        'message': message,
+        'incorrect': incorrect
     })
 
 @app.route('/validate_placement', methods=['POST'])

@@ -26,6 +26,27 @@
     <div class="learn-text-sm"></div>
     {% endif %}
 
+    <!-- Mini-game links -->
+    {% if lesson == "0" %}
+    <div class="text-center mt-4 mb-4">
+        <a href="{{ url_for('orientation_game', section='front_door') }}" class="btn btn-success">
+            <i class="fas fa-gamepad me-2"></i>Practice: Pick the Right Front Door Orientation
+        </a>
+    </div>
+    {% elif lesson == "1" %}
+    <div class="text-center mt-4 mb-4">
+        <a href="{{ url_for('orientation_game', section='bed_placement') }}" class="btn btn-success">
+            <i class="fas fa-gamepad me-2"></i>Practice: Pick the Right Bed Placement
+        </a>
+    </div>
+    {% elif lesson == "2" %}
+    <div class="text-center mt-4 mb-4">
+        <a href="{{ url_for('orientation_game', section='mirror_placement') }}" class="btn btn-success">
+            <i class="fas fa-gamepad me-2"></i>Practice: Pick the Right Mirror Placement
+        </a>
+    </div>
+    {% endif %}
+
     <div class="nav-buttons">
         <button class="btn btn-primary nav-btn" id="prevBtn" disabled>Back</button>
         <button class="btn btn-primary nav-btn" id="nextBtn">Next</button>

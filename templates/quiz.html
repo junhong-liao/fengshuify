@@ -18,9 +18,9 @@
             <div class="card-body">
                 <p class="card-text">What is the main goal of Feng Shui?</p>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q1" id="q1a" value="a">
+                    <input class="form-check-input" type="radio" name="q1" id="q1a" value="a" required>
                     <label class="form-check-label" for="q1a">
-                        To decorate a room in Chinese style
+                        To decorate a room in traditional Chinese style
                     </label>
                 </div>
                 <div class="form-check">
@@ -32,7 +32,7 @@
                 <div class="form-check">
                     <input class="form-check-input" type="radio" name="q1" id="q1c" value="c">
                     <label class="form-check-label" for="q1c">
-                        To organize furniture in a symmetrical way
+                        To organize furniture in a symmetrical pattern
                     </label>
                 </div>
             </div>
@@ -43,23 +43,23 @@
                 <h5>Question 2</h5>
             </div>
             <div class="card-body">
-                <p class="card-text">According to Feng Shui principles, where should a bed be positioned?</p>
+                <p class="card-text">According to Feng Shui principles, how should the front door be positioned?</p>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q2" id="q2a" value="a">
+                    <input class="form-check-input" type="radio" name="q2" id="q2a" value="a" required>
                     <label class="form-check-label" for="q2a">
-                        With a solid wall behind the headboard and not directly aligned with the door
+                        It should be the largest door in the house and in a brightly lit, open entryway
                     </label>
                 </div>
                 <div class="form-check">
                     <input class="form-check-input" type="radio" name="q2" id="q2b" value="b">
                     <label class="form-check-label" for="q2b">
-                        Directly under a window to maximize natural light
+                        It should be small and dark to prevent negative energy from entering
                     </label>
                 </div>
                 <div class="form-check">
                     <input class="form-check-input" type="radio" name="q2" id="q2c" value="c">
                     <label class="form-check-label" for="q2c">
-                        In the center of the room to create balance
+                        It should always face north to align with magnetic energy
                     </label>
                 </div>
             </div>
@@ -70,23 +70,77 @@
                 <h5>Question 3</h5>
             </div>
             <div class="card-body">
-                <p class="card-text">What does the concept of "qi" represent in Feng Shui?</p>
+                <p class="card-text">According to Feng Shui principles, how should a bed be positioned?</p>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="q3" id="q3a" value="a">
+                    <input class="form-check-input" type="radio" name="q3" id="q3a" value="a" required>
                     <label class="form-check-label" for="q3a">
-                        The arrangement of furniture
+                        With the foot of the bed pointed directly at the door for proper energy flow
                     </label>
                 </div>
                 <div class="form-check">
                     <input class="form-check-input" type="radio" name="q3" id="q3b" value="b">
                     <label class="form-check-label" for="q3b">
-                        The color scheme of a room
+                        Directly under a window to maximize natural light
                     </label>
                 </div>
                 <div class="form-check">
                     <input class="form-check-input" type="radio" name="q3" id="q3c" value="c">
                     <label class="form-check-label" for="q3c">
-                        The vital energy or life force
+                        Not with the foot pointed at the door, but with a clear view of the door
+                    </label>
+                </div>
+            </div>
+        </div>
+        
+        <div class="card mb-4">
+            <div class="card-header bg-light">
+                <h5>Question 4</h5>
+            </div>
+            <div class="card-body">
+                <p class="card-text">How should mirrors be placed according to Feng Shui principles?</p>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="q4" id="q4a" value="a" required>
+                    <label class="form-check-label" for="q4a">
+                        Directly facing the bed to reflect positive energy
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="q4" id="q4b" value="b">
+                    <label class="form-check-label" for="q4b">
+                        Not facing the bed or bedroom door, and not hung right above the bed
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="q4" id="q4c" value="c">
+                    <label class="form-check-label" for="q4c">
+                        Opposite the door to bounce energy back into the room
+                    </label>
+                </div>
+            </div>
+        </div>
+        
+        <div class="card mb-4">
+            <div class="card-header bg-light">
+                <h5>Question 5</h5>
+            </div>
+            <div class="card-body">
+                <p class="card-text">What does the concept of qì (气) represent in Feng Shui?</p>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="q5" id="q5a" value="a" required>
+                    <label class="form-check-label" for="q5a">
+                        The color scheme used in interior design
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="q5" id="q5b" value="b">
+                    <label class="form-check-label" for="q5b">
+                        The arrangement of furniture in a room
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="q5" id="q5c" value="c">
+                    <label class="form-check-label" for="q5c">
+                        The flow of energy throughout the universe
                     </label>
                 </div>
             </div>
@@ -97,11 +151,19 @@
         </div>
     </form>
     
-    <div id="results" class="mt-4 p-3 text-center" style="display: none;">
-        <h3>Quiz Results</h3>
-        <p id="score"></p>
-        <p id="feedback"></p>
-        <a href="{{ url_for('simulator') }}" class="btn btn-success mt-3">Try Room Simulator</a>
+    <div id="results" class="mt-4 p-3" style="display: none;">
+        <h3 class="text-center">Quiz Results</h3>
+        <p id="score" class="text-center"></p>
+        <p id="feedback" class="text-center mb-4"></p>
+        
+        <div id="incorrect-answers" class="mb-4">
+            <!-- Incorrect answers will be dynamically added here -->
+        </div>
+        
+        <div class="text-center">
+            <button id="retryQuiz" class="btn btn-secondary me-2">Retry Quiz</button>
+            <a href="{{ url_for('simulator') }}" class="btn btn-success">Try Room Simulator</a>
+        </div>
     </div>
 </div>
 {% endblock %}
