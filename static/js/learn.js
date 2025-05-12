@@ -15,7 +15,7 @@ function showSection(sectionNum) {
     let sectionData = learn_sections[sectionNum - 1];
     if (!sectionData) return;
 
-    $(".section-header").html(`<h2>${sectionData.title}</h2>`);
+    $(".section-header").html(`${sectionData.title}`);
     $(".learn-text").html(sectionData.summary);
     $(".learn-img").html(`<img src="${sectionData.image}" alt="${sectionData.alt}" 
         class="view-img img-fluid">`);
@@ -28,7 +28,7 @@ function showLesson(){
     let lessonData = lessons[lesson_id - 2];
     if (!lessonData) return;
 
-    $(".lesson-header").html(`<h2>${lessonData.title}</h2>`);
+    $(".lesson-header").html(`${lessonData.title}`);
     $(".learn-text").html(lessonData.summary);
     let attrList = "<ul>";
     lessonData.points.forEach(function(point) {

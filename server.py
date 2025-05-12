@@ -2,7 +2,6 @@ from flask import Flask, render_template, jsonify, request, url_for
 
 app = Flask(__name__)
 
-# TODO fill in data finalized ver.
 learn_sections = [
     {
         "title": "What is Feng Shui?",
@@ -78,11 +77,11 @@ lessons = [
     {
         "title": "5. Clutter",
         "summary": "Clutter is not only a visual drain on your mental energy, but it also blocks the" +
-                " flow of qì around your room. Try to reduce clutter by mitigating messes, but also " +
-                "reduce the amount of large furniture items that may not be necessary!",
-        "points": ["In bedrooms, rarely is more than one chair used at a time", "Avoid stuffing items " +
-                "underneath the bed", "Footboards and benches at the end of the bed are often unnecessary" +
-                " and only serve to block qì from the bed", "Avoid large amounts of electronics!"],
+                " flow of qì around your room. Try to reduce messes and cut down on " +
+                "large furniture items that may not be necessary!",
+        "points": ["Minimize extra chairs", "Avoid stuffing items underneath the bed",
+                "Footboards and benches at the end of the bed are often unnecessary",
+                "Avoid large amounts of electronics!"],
         "image": "/static/images/clutter.png",
         "alt": "Room diagram depicting clutter",
         "secondary": "Large amounts of clutter and extraneous items, particularly electronic devices, can" +
@@ -224,7 +223,7 @@ orientation_games = {
                 ],
                 "correct": "b",
                 "correct_label": "Clean minimalist bedroom",
-                "explanation": "This room is both tidy and devoid of unnecessary furniture items that would obstruct qì flow."
+                "explanation": "The idea room is both tidy and devoid of unnecessary furniture items that would obstruct qì flow."
     }
 }
 

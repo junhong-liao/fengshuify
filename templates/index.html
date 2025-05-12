@@ -1,17 +1,30 @@
 {% extends "layout.html" %}
 
 {% block content %}
-<div class="text-center">
-    <h1 class="my-4">Feng Shui Your Room</h1>
-    <div class="subheading">
-        Boost positive energy in your room using the principles of feng shui!
+<div class="text-center position-relative">
+
+    <div id="head-up" class="home-header">Feng Shui</div>
+
+    <div class="grey-band">
+        <div class="row align-items-stretch">
+            <div class="col-md-4"></div>
+            <div class="col-md-4">
+                <img src="{{ url_for('static', filename='images/bagua.png') }}"
+                                        alt="Feng Shui Bagua Diagram" id="home-img">
+            </div>
+            <div class="col-md-4 text-left d-flex flex-column justify-content-end">
+                <div id="home-subhead" class="mt-auto">
+                    Boost the positive energy in your room using the principles of feng shui!
+                </div>
+            </div>
+        </div>
     </div>
-    
-    <div class="mx-auto my-5" style="max-width: 400px;">
-        <img src="{{ url_for('static', filename='images/bagua.png') }}"
-             alt="Feng Shui Bagua Diagram" class="img-fluid rounded">
+
+    <div id="head-down" class="home-header">Your Room</div>
+
+    <div class="btn">
+        <a href="{{ url_for('learn', lesson=1) }}" class="btn" id="start-btn">START</a>
     </div>
-    
-    <a href="{{ url_for('learn', lesson=1) }}" class="btn btn-primary" style="background-color: #8470a7; border-color: #6e5b8b;">Start!</a>
 </div>
-{% endblock %} 
+{% endblock %}
+

@@ -1,6 +1,5 @@
-.active-nav-item {
-    font-weight: bold;
-    text-decoration: underline;
+:root {
+    --font-sans: "Hanken Grotesk", sans-serif;
 }
 body {
     font-family: 'Arial', sans-serif;
@@ -9,83 +8,178 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6 {
-    color: #5a4782;
+    color: #735557;
 }
 
+/* navbar styling */
 .navbar {
+    font-size: 20px;
+    background-color: #735557;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
-
-.nav-link.active {
-    text-decoration: underline;
+.navbar .nav-link {
+    color: #d29f7f !important;
+}
+.nav-item {
+    padding: 10px;
+}
+.navbar .nav-item.active-nav-item .nav-link {
+    font-weight: bold;
+    color: white !important;
 }
 
-.btn-primary {
-    background-color: #8470a7;
-    border-color: #6e5b8b;
+/* homepage */
+.home-header {
+    font-family: var(--font-sans);
+    font-weight: bold;
+    font-size: 120px;
+    color: #735557;
+    position: relative;
+    z-index: 2;
 }
-
-.btn-primary:hover, .btn-primary:focus {
-    background-color: #6e5b8b;
-    border-color: #5a4782;
+#head-up {
+    text-align: left;
+    margin-bottom: -110px;
+}
+#head-down {
+    text-align: right;
+    margin-top: -110px;
+}
+.grey-band {
+    background-color: #f0f0f0;
+    padding: 60px 20px;
+    margin: 25px 0;
+    position: relative;
+    z-index: 1;
+}
+#home-img {
+    width: 86%;
+    z-index: 2;
+}
+#home-subhead {
+    color: #888;
+    padding-right: 40%;
+    padding-bottom: 7%;
+    font-size: 20px;
+    text-align: left;
+}
+#start-btn {
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    background-color: #d29f7f;
+    border-color: #888;
+    border-width: 3px;
+    margin: 10px;
+    padding: 15px 30px;
 }
 
 .card {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
     transition: transform 0.3s;
 }
-
+.card-body {
+    color: #888;
+}
+.card-text {
+    font-weight: bold;
+}
+.card-header {
+    color: #d29f7f;
+    font-weight: bold;
+}
 .card:hover {
     transform: translateY(-5px);
+}
+.about-text {
+    color: #735557;
+    font-size: 17px;
 }
 
 /* learn overview styling */
 .learn-button {
-    background-color: #8470a7;
+    background-color: #d29f7f;
     color: white;
     border-radius: 12px;
-    height: 100px;
-    width: 150px;
+    height: 130px;
+    width: 170px;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
     font-size: 16px;
-    padding: 10px;
+    padding: 30px;
 }
 .learn-button:hover {
-    background-color: #6e5b8b;
+    background-color: #735557;
+    color: #d29f7f;
+}
+.content-container {
+    margin: 40px;
 }
 
-/* learn page styling */
+/* learn and orientation_game pages */
+.section-header, .lesson-header, .heading {
+    font-family: var(--font-sans);
+    font-weight: bold;
+    font-size: 60px;
+    color: #735557;
+}
+.learn-text {
+    color: #888;
+    padding: 0 20px;
+    font-size: 120%;
+}
+.attributes {
+    color: #888;
+    padding: 15px 20px;
+    font-size: 112%;
+}
+.learn-text-sm {
+    color: #888;
+    padding: 0 20px;
+    font-size: 120%;
+    margin-bottom: 75px;
+}
+.learn-img {
+    width: 65%;
+    display: block;
+    margin: 40px auto;
+}
+.nav-btn {
+    background-color: #d29f7f;
+    width: 15%;
+    color: #735557;
+    padding: 12px;
+}
+.nav-btn:hover {
+    background-color: #735557;
+    color: white;
+    font-weight: bold;
+}
+.nav-btn:disabled {
+    background-color: #f0f0f0;
+}
 .learn-container {
     background-color: white;
     padding: 30px;
     border-radius: 8px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-}
-.learn-container {
     max-width: 800px;
     margin: 0 auto;
-}
 .nav-buttons {
     display: flex;
     justify-content: space-between;
     margin-top: 30px;
 }
-.nav-btn {
-    background-color: #8470a7;
-    border-color: #6e5b8b;
-    width: 100px;
-}
-.nav-btn:disabled {
-    background-color: #ccbdee;
-    border-color: #ccbdee;
+#check-btn {
+    font-weight: bold;
+    color: white;
 }
 
-/* TODO simulation page styling */
+
 .room-container {
-    background-image: url('../images/grid-bg.png');
+    /*background-image: url('../images/grid-bg.png');*/
     background-size: 20px 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
@@ -122,4 +216,4 @@ h1, h2, h3, h4, h5, h6 {
     .furniture-items {
         justify-content: center;
     }
-} 
+}

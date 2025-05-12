@@ -30,8 +30,8 @@ $(document).ready(function() {
                             const cardBody = $('<div class="card-body"></div>');
                             
                             cardBody.append(`<p class="card-title fw-bold">${item.question}</p>`);
-                            cardBody.append(`<p class="card-text text-danger"><strong>Your answer:</strong> ${item.user_answer}</p>`);
-                            cardBody.append(`<p class="card-text text-success"><strong>Correct answer:</strong> ${item.correct_answer}</p>`);
+                            cardBody.append(`<p class="text-danger">Your answer: ${item.user_answer}</p>`);
+                            cardBody.append(`<p class="text-success">Correct answer: ${item.correct_answer}</p>`);
                             
                             card.append(cardBody);
                             incorrectAnswers.append(card);

@@ -20,25 +20,20 @@ $(document).ready(function() {
                 if (response.correct) {
                     gameResult.removeClass("alert-danger").addClass("alert-success");
                     gameResult.html(`
-                        <h4>Correct!</h4>
+                        <h4>Correct!</h4><br>
                         <p>${response.explanation}</p>
                     `);
                     $('#nextBtn').removeClass("disabled");
                 } else {
                     gameResult.removeClass("alert-success").addClass("alert-danger");
                     gameResult.html(`
-                        <h4>Not quite right</h4>
+                        <h4>Not quite right...</h4><br>
                         <p>${response.explanation}</p>
                         <p>The correct orientation is: ${response.correct_label}</p>
                     `);
                 }
 
                 gameResult.removeClass("d-none");
-
-                // Scroll to result
-                $('html, body').animate({
-                    scrollTop: gameResult.offset().top - 100
-                }, 200);
             }
         });
     });

@@ -4,15 +4,16 @@
 
 {% block content %}
 <div class="container" style="max-width: 800px;">
-    <h1 class="text-center mb-4">About This Project</h1>
+    <div class="text-center heading">About</div>
     
     <div class="card mb-4">
         <div class="card-body">
-            <h5 class="card-title">Feng Shui Your Room!</h5>
-            <p class="card-text">
-                This is an educational web application designed to teach the principles of Feng Shui through interactive learning and a room simulation experience.
+            <p class="about-text">
+                Feng Shui Your Room is an educational web application designed to teach the principles of Feng Shui
+                through interactive learning and a room simulation experience.
+
             </p>
-            <p class="card-text">
+            <p class="about-text">
                 The application includes:
             </p>
             <ul>
@@ -20,41 +21,34 @@
                 <li>An interactive room simulator to practice furniture placement</li>
                 <li>A quiz to test your knowledge</li>
             </ul>
-        </div>
-    </div>
-    
-    <div class="card mb-4">
-        <div class="card-header">
-            <h5>Learning Objectives</h5>
-        </div>
-        <div class="card-body">
+            <p class="about-text">
+                The primary learning objectives are:
+            </p>
             <ul>
-                <li>Understand the history and philosophy of Feng Shui</li>
-                <li>Apply interior layout rules based on qi flow</li>
-                <li>Reinforce learning through practical simulation</li>
-                <li>Build intuitive understanding rather than rote memorization</li>
+                <li>Understanding basic history and philosophy of Feng Shui</li>
+                <li>Applying interior layout rules based on qi flow, primarily in a bedroom setting</li>
+                <li>Reinforcing learning through hands-on simulation</li>
+                <li>Building intuitive understanding rather than rote memorization</li>
             </ul>
         </div>
     </div>
     
     <div class="card">
-        <div class="card-header">
-            <h5>Technical Implementation</h5>
-        </div>
         <div class="card-body">
-            <p>This prototype was built using:</p>
+            <p>This project was done by Jennifer Fu and Junhong Liao for User Interface Design (COMS4170) at Columbia University.
+                 The site was built using the following libraries and frameworks:</p>
             <ul>
-                <li>Flask (Python web framework)</li>
-                <li>Jinja2 (Templating engine)</li>
-                <li>Bootstrap (UI Framework)</li>
-                <li>jQuery (JavaScript library)</li>
-                <li>jQuery UI (For drag-and-drop functionality)</li>
+                <li>Flask</li>
+                <li>Jinja2</li>
+                <li>Bootstrap</li>
+                <li>jQuery</li>
+                <li>jQuery UI (drag-and-drop functionality)</li>
             </ul>
         </div>
     </div>
     
     <div class="text-center mt-4">
-        <a href="{{ url_for('home') }}" class="btn btn-primary" style="background-color: #8470a7; border-color: #6e5b8b;">Back to Home</a>
+        <a href="{{ url_for('home') }}" class="btn nav-btn">Back to Home</a>
     </div>
 </div>
 {% endblock %} 

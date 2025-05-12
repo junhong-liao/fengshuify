@@ -1,31 +1,28 @@
 $(document).ready(function() {
     const currentPath = window.location.pathname;
     
-    $('.navbar-nav .nav-link').each(function() {
-        const linkPath = $(this).attr('href');
+    $('.navbar-nav .nav-item').each(function() {
+        const $navLink = $(this).find('.nav-link');
+        const linkPath = $navLink.attr('href');
+
         if (currentPath === linkPath) {
-            $(this).addClass('active fw-bold');
+            $(this).addClass('active-nav-item');
+        }
+        else if ((linkPath.includes('/learn') || linkPath.includes('/orientation_game')) &&
+            (currentPath.includes('/learn') || currentPath.includes('/orientation_game'))) {
+            $(this).addClass('active-nav-item');
+        }
+        else {
+            $(this).removeClass('active-nav-item');
         }
     });
     
     $('.btn').hover(
         function() {
-            $(this).css('opacity', '0.9');
+            $(this).css('opacity', '0.8');
         },
         function() {
             $(this).css('opacity', '1');
         }
     );
-    
-    $('a[href^="#"]').on('click', function(event) {
-        if (this.hash !== '') {
-            event.preventDefault();
-            const hash = this.hash;
-            $('html, body').animate({
-                scrollTop: $(hash).offset().top
-            }, 800, function() {
-                window.location.hash = hash;
-            });
-        }
-    });
 }); 

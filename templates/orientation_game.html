@@ -10,17 +10,10 @@
 
 {% block content %}
 <div class="container">
-    <h1 class="text-center mb-4">Pick the Right Orientation</h1>
-    <h2 class="text-center mb-3">{{ section_name }}</h2>
+    <h2 class="text-center heading">{{ section_name }}</h2>
     
     <div class="row mb-4">
-        <div class="col-12">
-            <div class="card">
-                <div class="card-body">
-                    <p class="card-text">{{ game_instruction }}</p>
-                </div>
-            </div>
-        </div>
+        <p class="learn-text">{{ game_instruction }}</p>
     </div>
     
     <form id="orientationGameForm">
@@ -31,20 +24,14 @@
             <div class="col-md-4 mb-4">
                 <div class="card h-100">
                     <div class="position-relative">
-                        <!-- Placeholder for image, to be replaced with actual images -->
-                        <img src="{{ choice.image_url }}" class="card-img-top" alt="{{ choice.alt }}" 
-                             style="height: 200px; background-color: #f0f0f0; {% if not choice.image_url %}display: flex; justify-content: center; align-items: center;{% endif %}">
-                        {% if not choice.image_url %}
-                        <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
-                            Image {{ loop.index }} Placeholder
-                        </div>
-                        {% endif %}
+                        <img src="{{ choice.image_url }}" class="card-img-top" alt="{{ choice.alt }}"
+                             style="width: 100%; background-color: #f0f0f0; {% if not choice.image_url %}display: flex; justify-content: center; align-items: center;{% endif %}">
                     </div>
                     <div class="card-body">
                         <div class="form-check">
                             <input class="form-check-input" type="radio" name="orientation" 
                                    id="choice{{ loop.index }}" value="{{ choice.id }}" required>
-                            <label class="form-check-label" for="choice{{ loop.index }}">
+                            <label class="form-check-label" for="choice{{ loop.index }}" style="color: #735557;">
                                 {{ choice.label }}
                             </label>
                         </div>
@@ -55,17 +42,17 @@
         </div>
         
         <div class="text-center mb-4">
-            <button type="submit" class="btn btn-primary" style="background-color: #8470a7; border-color: #6e5b8b;">
-                Check Answer
+            <button type="submit" class="btn nav-btn" id="check-btn">
+                Check Answer!
             </button>
         </div>
     </form>
     
     <div id="gameResult" class="alert d-none mb-4"></div>
 
-    <div class="nav-buttons">
-        <button class="btn btn-primary nav-btn" id="prevBtn">Back</button>
-        <button class="btn btn-primary nav-btn disabled" id="nextBtn">Next</button>
+    <div class="nav-buttons d-flex">
+        <button class="btn nav-btn" id="prevBtn">Back</button>
+        <button class="btn nav-btn disabled ms-auto" id="nextBtn">Next</button>
     </div>
 </div>
 

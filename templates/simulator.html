@@ -12,7 +12,7 @@
         display: grid;
         grid-template-columns: repeat(8, 1fr);
         grid-template-rows: repeat(8, 1fr);
-        border: 2px solid #8470a7;
+        border: 6px solid #735557;
         margin: 0 auto;
         width: 600px;
         height: 600px;
@@ -27,7 +27,7 @@
         display: flex;
         gap: 15px;
         margin: 20px auto;
-        background-color: #f0ebf7;
+        background-color: #f0f0f0;
         padding: 15px;
         border-radius: 8px;
         justify-content: center;
@@ -35,7 +35,6 @@
     
     .furniture-item {
         height: 80px;
-        border: 2px solid #8470a7;
         border-radius: 4px;
         display: flex;
         align-items: center;
@@ -62,54 +61,33 @@
         box-shadow: 0 2px 8px rgba(0,0,0,0.1);
     }
     
-    .door {
-        background-color: #a58fcc;
+    .door, .placed-door {
+        background-color: #735557;
+        border: 3px solid #434343;
     }
     
-    .chair {
-        background-color: #b6a7d4;
+    .chair, .desk, .placed-desk, .placed-chair {
+        background-color: #d29f7f;
+        border: 3px solid #735557;
     }
     
-    .desk {
-        background-color: #c7bfdb;
+    .bed, .placed-bed {
+        background-color: #ead1db;
+        border: 3px solid #eab9c1;
     }
     
-    .bed {
-        background-color: #d8d7e2;
-    }
-    
-    .mirror {
-        background-color: #e9efe9;
+    .mirror, .placed-mirror {
+        background-color: #cccccc;
+        border: 3px solid #888;
     }
     
     .item-placed {
         position: absolute;
-        border: 2px solid black;
         display: flex;
         align-items: center;
         justify-content: center;
         font-weight: bold;
         z-index: 10;
-    }
-    
-    .placed-door {
-        background-color: #a58fcc;
-    }
-    
-    .placed-chair {
-        background-color: #b6a7d4;
-    }
-    
-    .placed-desk {
-        background-color: #c7bfdb;
-    }
-    
-    .placed-bed {
-        background-color: #d8d7e2;
-    }
-    
-    .placed-mirror {
-        background-color: #e9efe9;
     }
     
     #grid-wrapper {
@@ -120,19 +98,19 @@
     }
     
     .instructions {
-        background-color: #e3f2fd;
         padding: 10px;
         margin: 20px auto;
         border-radius: 8px;
         max-width: 600px;
+        color: #888;
     }
 </style>
 {% endblock %}
 
 {% block content %}
 <div class="simulator-container">
-    <h1 class="text-center mb-4">Feng Shui Room Simulator</h1>
-    <p class="text-center">Place furniture items in the grid according to Feng Shui principles. Items snap to the grid - invalid placements will return to the menu.</p>
+    <div class="text-center heading">Room Simulator</div>
+    <p class="text-center learn-text">Place furniture items in the grid according to Feng Shui principles. Items snap to the grid - invalid placements will return to the menu.</p>
     
     <div class="item-menu">
         <div class="furniture-item door" data-type="door" data-width="2" data-height="1" draggable="true">
@@ -158,8 +136,8 @@
     </div>
     
     <div class="instructions text-center">
-        <p>Click on a furniture item first, then click on the grid to place it.</p>
-        <p>Click on placed items to remove them from the grid.</p>
+        Click on a furniture item first, then click on the grid to place it.<br>
+        Click on placed items to remove them from the grid.
     </div>
     
     <div id="grid-wrapper">
@@ -167,7 +145,7 @@
     </div>
     
     <div id="feedback-container" class="text-center mt-3">
-        <button id="validate-btn" class="btn btn-success mt-3">Validate Feng Shui</button>
+        <button id="validate-btn" class="btn nav-btn">Validate Feng Shui</button>
     </div>
 </div>
 {% endblock %}

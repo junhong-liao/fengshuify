@@ -6,13 +6,13 @@
 
 {% block content %}
 <div class="container" style="max-width: 800px;">
-    <h1 class="text-center mb-4">Feng Shui Knowledge Quiz</h1>
-    <p class="text-center mb-4">Test your knowledge on Feng Shui principles!</p>
+    <div class="heading">Conceptual Knowledge Quiz</div>
+    <p class="text-center learn-text">Check what you remember about the Feng Shui principles!</p>
     
     <form id="quizForm">
         <div class="card mb-4">
             <div class="card-header bg-light">
-                <h5>Question 1</h5>
+                Question 1
             </div>
             <div class="card-body">
                 <p class="card-text">What is the main goal of Feng Shui?</p>
@@ -39,7 +39,7 @@
         
         <div class="card mb-4">
             <div class="card-header bg-light">
-                <h5>Question 2</h5>
+                Question 2
             </div>
             <div class="card-body">
                 <p class="card-text">According to Feng Shui principles, how should the front door be positioned?</p>
@@ -66,7 +66,7 @@
         
         <div class="card mb-4">
             <div class="card-header bg-light">
-                <h5>Question 3</h5>
+                Question 3
             </div>
             <div class="card-body">
                 <p class="card-text">According to Feng Shui principles, how should a bed be positioned?</p>
@@ -93,7 +93,7 @@
         
         <div class="card mb-4">
             <div class="card-header bg-light">
-                <h5>Question 4</h5>
+                Question 4
             </div>
             <div class="card-body">
                 <p class="card-text">How should mirrors be placed according to Feng Shui principles?</p>
@@ -120,7 +120,7 @@
         
         <div class="card mb-4">
             <div class="card-header bg-light">
-                <h5>Question 5</h5>
+                Question 5
             </div>
             <div class="card-body">
                 <p class="card-text">What does the concept of qì (气) represent in Feng Shui?</p>
@@ -146,7 +146,7 @@
         </div>
         
         <div class="text-center">
-            <button type="submit" class="btn btn-primary" style="background-color: #8470a7; border-color: #6e5b8b;">Submit Answers</button>
+            <button type="submit" class="btn nav-btn">Submit</button>
         </div>
     </form>
     
@@ -161,7 +161,7 @@
         
         <div class="text-center">
             <button id="retryQuiz" class="btn btn-secondary me-2">Retry Quiz</button>
-            <a href="{{ url_for('simulator') }}" class="btn btn-success">Try Room Simulator</a>
+            <a href="{{ url_for('simulator') }}" class="btn nav-btn">Try Room Simulator!</a>
         </div>
     </div>
 </div>

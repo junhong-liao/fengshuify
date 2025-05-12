@@ -306,7 +306,7 @@
         // Add validate button back
         const validateBtn = document.createElement('button');
         validateBtn.textContent = 'Validate Feng Shui';
-        validateBtn.classList.add('btn', 'btn-success', 'mt-3');
+        validateBtn.classList.add('btn', 'nav-btn');
         validateBtn.id = 'validate-btn';
         validateBtn.addEventListener('click', validatePlacement);
         
