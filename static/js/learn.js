@@ -2,7 +2,6 @@ let currentSection = 1;
 let totalSections = 3;
 
 function updateNavButtons() {
-    // TODO fix forward/backward buttons
     if (currentSection > 1 || lesson_id > 1) {
         $('#prevBtn').removeClass("disabled");
     }

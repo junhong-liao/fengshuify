@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 {% block head %}
-<script type="text/javascript" src="{{url_for('static', filename='learn.js')}}"></script>
+<script type="text/javascript" src="{{url_for('static', filename='js/learn.js')}}"></script>
 <script>
     let learn_sections = {{ learn_sections | tojson }}
     let lessons = {{ lessons | tojson }}
