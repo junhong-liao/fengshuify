@@ -80,9 +80,8 @@ lessons = [
     },
 ]
 
-# Orientation mini-game data
 orientation_games = {
-    "front_door": {
+    "1": {
         "section_name": "Front Door Placement",
         "game_instruction": "Choose the correct front door placement for optimal Feng Shui energy flow:",
         "choices": [
@@ -109,7 +108,7 @@ orientation_games = {
         "correct_label": "Large door opening to a spacious, well-lit entryway",
         "explanation": "A large door that opens to a spacious, well-lit entryway allows positive qi energy to flow freely into the home. This creates an inviting entrance and prevents energy blockages."
     },
-    "bed_placement": {
+    "2": {
         "section_name": "Bed Placement",
         "game_instruction": "Select the optimal bed placement according to Feng Shui principles:",
         "choices": [
@@ -136,7 +135,7 @@ orientation_games = {
         "correct_label": "Bed with solid wall behind headboard and clear view of the door",
         "explanation": "The optimal bed placement has a solid wall behind the headboard for support and stability, while having a clear view of the door provides security. The foot of the bed should not point directly at the door as this is considered the 'death position' in Feng Shui."
     },
-    "mirror_placement": {
+    "3": {
         "section_name": "Mirror Placement",
         "game_instruction": "Choose the correct mirror placement for good Feng Shui:",
         "choices": [
@@ -162,6 +161,60 @@ orientation_games = {
         "correct": "c",
         "correct_label": "Mirror on side wall, not facing bed or door",
         "explanation": "Mirrors should not face the bed as they can disturb sleep by reflecting energy, and shouldn't face the door as they can bounce energy back out. The best placement is on a side wall where it won't reflect the bed or door."
+    },
+    "4": {
+            "section_name": "Concept 4",
+            "game_instruction": "",
+            "choices": [
+                {
+                    "id": "a",
+                    "label": "",
+                    "image_url": "",
+                    "alt": ""
+                },
+                {
+                    "id": "b",
+                    "label": "",
+                    "image_url": "",
+                    "alt": ""
+                },
+                {
+                    "id": "c",
+                    "label": "",
+                    "image_url": "",
+                    "alt": ""
+                }
+            ],
+            "correct": "a",
+            "correct_label": "",
+            "explanation": ""
+    },
+    "5": {
+                "section_name": "Concept 5",
+                "game_instruction": "",
+                "choices": [
+                    {
+                        "id": "a",
+                        "label": "",
+                        "image_url": "",
+                        "alt": ""
+                    },
+                    {
+                        "id": "b",
+                        "label": "",
+                        "image_url": "",
+                        "alt": ""
+                    },
+                    {
+                        "id": "c",
+                        "label": "",
+                        "image_url": "",
+                        "alt": ""
+                    }
+                ],
+                "correct": "b",
+                "correct_label": "",
+                "explanation": ""
     }
 }
 
@@ -195,29 +248,18 @@ def simulator():
 def about():
     return render_template('about.html')
 
-# New route for the orientation mini-game
 @app.route('/orientation_game/<section>')
 def orientation_game(section):
     if section not in orientation_games:
         return "Game not found", 404
     
     game_data = orientation_games[section]
-    # Determine back URL based on section
-    if section == "front_door":
-        back_url = url_for('learn', lesson="0")
-    elif section == "bed_placement":
-        back_url = url_for('learn', lesson="1")
-    elif section == "mirror_placement":
-        back_url = url_for('learn', lesson="2")
-    else:
-        back_url = url_for('learn_overview')
     
     return render_template('orientation_game.html', 
                           section=section,
                           section_name=game_data["section_name"],
                           game_instruction=game_data["game_instruction"],
-                          choices=game_data["choices"],
-                          back_url=back_url)
+                          choices=game_data["choices"])
 
 # API endpoint to check orientation game answers
 @app.route('/check_orientation', methods=['POST'])
@@ -375,7 +417,7 @@ def validate_placement():
     
     # If no negative feedback, add positive message
     if not feedback:
-        feedback.append("Great job! Your room has good Feng Shui energy flow.")
+        feedback.append("Great job! Your room has good Feng Shui energy flow. You've successfully learned the basic concepts of Feng Shui!")
     
     return jsonify({
         'valid': len(feedback) == 1 and "Great job" in feedback[0],

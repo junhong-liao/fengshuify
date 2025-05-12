@@ -1,6 +1,12 @@
 {% extends "layout.html" %}
 
 {% block title %}Feng Shui Orientation Game - {{ section_name }}{% endblock %}
+{% block head %}
+<script type="text/javascript" src="{{url_for('static', filename='orientation_game.js')}}"></script>
+<script>
+    let part = parseInt("{{ section }}")
+</script>
+{% endblock %}
 
 {% block content %}
 <div class="container">
@@ -56,56 +62,11 @@
     </form>
     
     <div id="gameResult" class="alert d-none mb-4"></div>
-    
-    <div class="text-center mb-4">
-        <a href="{{ back_url }}" class="btn btn-secondary me-2">Back to Lesson</a>
-        <a href="{{ url_for('learn_overview') }}" class="btn btn-outline-primary">All Lessons</a>
+
+    <div class="nav-buttons">
+        <button class="btn btn-primary nav-btn" id="prevBtn">Back</button>
+        <button class="btn btn-primary nav-btn disabled" id="nextBtn">Next</button>
     </div>
 </div>
 
 {% endblock %}
-
-{% block additional_scripts %}
-<script>
-$(document).ready(function() {
-    $("#orientationGameForm").submit(function(event) {
-        event.preventDefault();
-        
-        const selectedValue = $("input[name='orientation']:checked").val();
-        const gameResult = $("#gameResult");
-        
-        $.ajax({
-            url: "/check_orientation",
-            method: "POST",
-            data: {
-                section: $("input[name='section']").val(),
-                choice: selectedValue
-            },
-            success: function(response) {
-                if (response.correct) {
-                    gameResult.removeClass("alert-danger").addClass("alert-success");
-                    gameResult.html(`
-                        <h4>Correct!</h4>
-                        <p>${response.explanation}</p>
-                    `);
-                } else {
-                    gameResult.removeClass("alert-success").addClass("alert-danger");
-                    gameResult.html(`
-                        <h4>Not quite right</h4>
-                        <p>${response.explanation}</p>
-                        <p>The correct orientation is: ${response.correct_label}</p>
-                    `);
-                }
-                
-                gameResult.removeClass("d-none");
-                
-                // Scroll to result
-                $('html, body').animate({
-                    scrollTop: gameResult.offset().top - 100
-                }, 200);
-            }
-        });
-    });
-});
-</script>
-{% endblock %} 

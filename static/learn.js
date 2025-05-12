@@ -3,8 +3,12 @@ let totalSections = 3;
 
 function updateNavButtons() {
     // TODO fix forward/backward buttons
-    $('#prevBtn').prop('disabled', currentSection === 1);
-    $('#nextBtn').text('Next');
+    if (currentSection > 1 || lesson_id > 1) {
+        $('#prevBtn').removeClass("disabled");
+    }
+    else {
+        $('#prevBtn').addClass("disabled");
+    }
 }
 
 function showSection(sectionNum) {
@@ -41,6 +45,7 @@ function showLesson(){
 }
 
 $(document).ready(function() {
+    updateNavButtons();
     if (lesson_id > 1) {
         totalSections = 1;
         showLesson();
@@ -57,16 +62,21 @@ $(document).ready(function() {
             window.location.href = `/learn/2`;
         }
         else if (lesson_id <= 6) {
-                window.location.href = `/mini_simulator/${lesson_id - 1}`;
+                window.location.href = `/orientation_game/${lesson_id - 1}`;
         } else {
             window.location.href = "/simulator";
         }
     });
 
     $('#prevBtn').click(function() {
-        if (currentSection > 1) {
+        if (lesson_id === 1 && currentSection > 1) {
             showSection(--currentSection);
         }
+        else if (lesson_id === 2) {
+            window.location.href = `/learn/1`;
+        }
+        else if (lesson_id > 2) {
+            window.location.href = `/orientation_game/${lesson_id - 2}`;
+        }
     });
-    updateNavButtons();
 });
