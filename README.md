@@ -12,7 +12,7 @@ Can be accessed by navigating to http://127.0.0.1:5000/ once a Python server is 
 
 ## Demo:
 
-[![Video Title](https://img.youtube.com/vi/VIDEO_ID/0.jpg)](https://www.youtube.com/watch?v=HRH2sgctGwE)
+[![Video Title](https://img.youtube.com/vi/HRH2sgctGwE/0.jpg)](https://www.youtube.com/watch?v=HRH2sgctGwE)
 
 
 ## Project Structure
