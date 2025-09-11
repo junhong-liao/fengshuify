@@ -1,54 +1,19 @@
 # Feng Shui Your Room!
 
-An educational web application that teaches the principles of Feng Shui through interactive learning and room simulation.
 
-## Features
+A web app that teaches basic Feng Shui principles, helping users learn interactively and apply the knowledge to their own rooms through a furniture placement simulation.
+Can be accessed by navigating to http://127.0.0.1:5000/ once a Python server is up and running!
 
-- Educational content about Feng Shui history and principles
-- Interactive room simulator for practicing furniture placement
-- Knowledge quiz to test understanding
-- Responsive design works on desktop and mobile
+## Features:
 
-## Technologies Used
+- Educational slides on basic Feng Shui history, philosophy, and principles
+- An interactive room simulator for practicing furniture placement
+- A knowledge quiz to test understanding
 
-- Flask (Python web framework)
-- Jinja2 (Templating engine)
-- Bootstrap 5 (UI Framework)
-- jQuery and jQuery UI (JavaScript libraries)
-- HTML5, CSS3, JavaScript
+## Demo:
 
-## Getting Started
+[![Video Title](https://img.youtube.com/vi/VIDEO_ID/0.jpg)](https://www.youtube.com/watch?v=HRH2sgctGwE)
 
-### Prerequisites
-
-- Python 3.7 or higher
-- pip (Python package installer)
-
-### Installation
-
-1. Clone the repository
-```
-git clone https://github.com/yourusername/feng-shui-your-room.git
-cd feng-shui-your-room
-```
-
-2. Create a virtual environment (optional but recommended)
-```
-python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
-```
-
-3. Install dependencies
-```
-pip install flask
-```
-
-4. Run the application
-```
-python server.py 
-```
-
-5. Open your browser and navigate to `http://127.0.0.1:5000/`
 
 ## Project Structure
 
@@ -58,4 +23,12 @@ python server.py
   - `css/` - Custom CSS styles
   - `js/` - JavaScript files
   - `images/` - Images used in the application
+ 
+## Uses:
+
+- Flask
+- Jinja2
+- Bootstrap 5
+- JavaScript, using jQuery
+- HTML5, CSS3
 
