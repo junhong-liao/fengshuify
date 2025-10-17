@@ -10,7 +10,7 @@ Can be accessed by navigating to http://127.0.0.1:5000/ once a Python server is 
 - An interactive room simulator for practicing furniture placement
 - A knowledge quiz to test understanding
 
-## Demo:
+## Video Demo:
 
 [![Video Title](https://img.youtube.com/vi/HRH2sgctGwE/0.jpg)](https://www.youtube.com/watch?v=HRH2sgctGwE)
 
